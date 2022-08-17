@@ -1,0 +1,66 @@
+<div class="header">
+  <div class="header-izq">
+      <h4 [routerLink]="[ '/home/productos' ]">Minimarket Plus</h4>
+  </div>
+  <div class="header-medio">
+      <input type="text" placeholder="Buscar productos.." name="search" [(ngModel)]="search">
+      <button (click)="buscarProductoByNombre()"><img src="https://cdn-icons-png.flaticon.com/512/16/16492.png" alt="" width="17px"></button>
+  </div>
+  <div class="header-der">
+      <button [routerLink]="[ '/home/cart' ]">
+          <img src="https://cdn-icons-png.flaticon.com/512/107/107831.png" alt="" width="20px">
+      </button>
+      <button>
+          <img src="https://image.flaticon.com/icons/png/512/1077/1077063.png" alt="" width="20px">
+      </button>
+      <button (click)="logout()">
+          <img src="https://cdn-icons-png.flaticon.com/512/56/56805.png?w=360" alt="" width="20px">
+      </button>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="side-bar">
+      <ul>
+          <li (click)="cargarProductos()">TODOS</li>
+          <li *ngFor="let categoria of categorias" (click)="productosCategoria(categoria.id)">{{categoria.nombre}}</li>
+      </ul>
+  </div>
+  
+  <div class="productos" >
+      <div class="producto" *ngFor="let producto of productos" [routerLink]="[ producto.id ]">
+          <div class="img-top">
+              <img [src]="producto.imagen" height="150px">        
+          </div>
+          <div class="producto-info">
+              <p>{{producto.nombre}}</p>
+              <p style="font-size: 13px">{{producto.precio | currency: 'S/.'}}</p>
+          </div>
+          
+      </div>
+  
+  </div>
+
+</div>
+
+<div class="footer">
+      <div class="left-footer">
+          <div style="margin-bottom: 20px;">
+              <img src="../../../assets/facebook.png" width="40px" alt="">
+              <img src="../../../assets/instagram.png" width="40px" style="margin: 0 40px;" alt="">
+              <img src="../../../assets/twitter.png" width="40px" alt="">
+          </div>
+          <h5 style="color: #fff;">SIGUENOS EN NUESTRAS REDES SOCIALES</h5>
+
+          
+      </div>
+      <div class="right-footer">
+
+          <div>
+              <h1 style="color: #fff;">(01) 5308511</h1>
+          </div>
+          <h5 style="color: #fff; margin-top: 20px;">LLAMANOS AL SIGUIENTE NÚMERO</h5>
+          
+      </div>
+</div>
